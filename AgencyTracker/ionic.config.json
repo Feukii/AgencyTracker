@@ -1,0 +1,7 @@
+{
+  "name": "AgencyTracker",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

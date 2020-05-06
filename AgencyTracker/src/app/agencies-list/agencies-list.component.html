@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="ViewMap()">
+        <ion-icon name= "map"></ion-icon>All Agencies
+      </ion-button>
+    </ion-buttons>
+    <ion-title>SmobilPay's Agencies</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+
+  <div class="list-group">
+    <ion-list>
+      <ion-item *ngFor="let agency of agencies">
+        <ion-icon name="location"></ion-icon>{{ agency.payload.doc.data().agencyName }}
+        <p>Town: {{ agency.payload.doc.data().town}}</p>
+      </ion-item>
+    </ion-list>
+  </div>
+  <ion-button (click)="onNewAgency()">Nouvelle agence</ion-button>
+</ion-content>

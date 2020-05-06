@@ -1,0 +1,66 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>
+            ADD A NEW AGENCY
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="false">
+    <form [formGroup]="this.agenciesDataService.form">
+        <div class="form-group">
+        <ion-item>
+            <ion-label position="floating" for = "agencyName">
+                <ion-icon name="home"></ion-icon>
+                 Name
+            </ion-label>
+            <ion-input  type="text" placeholder="Agency Name"
+                        class="form-control" formControlName="agencyName"></ion-input>
+        </ion-item>
+        </div>
+        <div class="form-group">
+            <ion-item>
+                <ion-label position="floating" for = "town">
+                    <ion-icon name="home"></ion-icon>
+                    Town
+                </ion-label>
+                <ion-input  type="text" placeholder="town"
+                            class="form-control" formControlName="town"></ion-input>
+            </ion-item>
+        </div>
+        <div class="form-group">
+            <ion-item>
+                <ion-label position="floating" for = "district">
+                    <ion-icon name="home"></ion-icon>
+                    District
+                </ion-label>
+                <ion-input  type="text" placeholder="district"
+                            class="form-control" formControlName="district"></ion-input>
+            </ion-item>
+        </div>
+        <div class="form-group">
+            <ion-item>
+                <ion-label position="floating" for = "latitude">
+                    <ion-icon name="home"></ion-icon>
+                    latitude
+                </ion-label>
+                <ion-input  type="number" placeholder="latitude"
+                            class="form-control" formControlName="latitude"></ion-input>
+            </ion-item>
+        </div>
+        <div class="form-group">
+            <ion-item>
+                <ion-label position="floating" for = "longitude">
+                    <ion-icon name="home"></ion-icon>
+                    longitude
+                </ion-label>
+                <ion-input  type="number" id="longitude"
+                            class="form-control" formControlName="longitude"></ion-input>
+            </ion-item>
+        </div>
+    <ion-button class="btn btn-success" [disabled]="this.agenciesDataService.form.invalid" type="submit" (click)="onSubmit()">REGISTER</ion-button>
+    </form>
+</ion-content>
