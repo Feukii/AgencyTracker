@@ -1,15 +1,15 @@
-import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
-import * as firebase from "firebase";
-import { AuthService } from "../services/auth.service";
-import { AgenciesDataService } from "../services/agencies-data.service";
-import { Map, latLng, tileLayer, Layer, marker } from "leaflet";
-import * as L from "leaflet";
-import { AngularFirestore } from "@angular/fire/firestore";
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import * as firebase from 'firebase';
+import { AuthService } from '../services/auth.service';
+import { AgenciesDataService } from '../services/agencies-data.service';
+import { Map, latLng, tileLayer, Layer, marker } from 'leaflet';
+import * as L from 'leaflet';
+import { AngularFirestore } from '@angular/fire/firestore';
 @Component({
-  selector: "app-menu",
-  templateUrl: "./menu.component.html",
-  styleUrls: ["./menu.component.scss"],
+  selector: 'app-menu',
+  templateUrl: './menu.component.html',
+  styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit {
   isAuth: boolean;
@@ -25,26 +25,26 @@ export class MenuComponent implements OnInit {
     private agenciesDataService: AgenciesDataService,
     private firestore: AngularFirestore
   ) {}
-  getAgencyDetails(agency) {
-    this.router.navigate(["/agency-details"]);
-  }
   movetosignin() {
-    this.router.navigate(["/auth/signin"]);
+    this.router.navigate(['/auth/signin']);
   }
   UseConditions() {
-    this.router.navigate(["term-of-use"]);
+    this.router.navigate(['term-of-use']);
   }
   services() {
-    this.router.navigate([""]);
+    this.router.navigate(['services']);
   }
   agencylists() {
-    this.router.navigate(["agencies"]);
+    this.router.navigate(['agencies']);
   }
   contactus() {
-    this.router.navigate(["contact"]);
+    this.router.navigate(['contact']);
   }
   closeagencies() {
-    this.router.navigate([""]);
+    this.router.navigate(['closest-agencies']);
+  }
+  clickmethod() {
+    this.isfiltered = true;
   }
   ngOnInit() {
     firebase.auth().onAuthStateChanged((user) => {
@@ -62,7 +62,7 @@ export class MenuComponent implements OnInit {
   }
   ionViewDidEnter() {
     this.firestore
-      .collection("agencies")
+      .collection('agencies')
       .snapshotChanges()
       .subscribe((querySnapshot) => {
         this.agencies = querySnapshot;
@@ -78,9 +78,9 @@ export class MenuComponent implements OnInit {
   }
 
   leafletMap() {
-    const iconRetinaUrl = "assets/icon/marker-icon-2x.png";
-    const iconUrl = "assets/icon/marker-icon.png";
-    const shadowUrl = "assets/icon/marker-shadow.png";
+    const iconRetinaUrl = 'assets/icon/marker-icon-2x.png';
+    const iconUrl = 'assets/icon/marker-icon.png';
+    const shadowUrl = 'assets/icon/marker-shadow.png';
     const iconDefault = L.icon({
       iconRetinaUrl,
       iconUrl,
@@ -92,16 +92,20 @@ export class MenuComponent implements OnInit {
       shadowSize: [41, 41],
     });
     L.Marker.prototype.options.icon = iconDefault;
-    this.map = new Map("mapId").setView(
-      [3.8576127999999996, 11.513855999999999],
-      10
+
+    this.map = new Map('mapId').setView(
+      [4.05055, 9.70235],
+      18
     );
-    tileLayer(
-      "http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}",
-      {
-        attribution: "edupala.com © ionic LeafLet",
-      }
-    ).addTo(this.map);
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors,' +
+          ' <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+      maxZoom: 18,
+      id: 'mapbox/streets-v11',
+      tileSize: 512,
+      zoomOffset: -1,
+      accessToken: 'pk.eyJ1IjoiZmV1a2lpIiwiYSI6ImNrOXdvY2MxazAwN3Izb3JvcnUzcjRmYmgifQ.zvLVpJsn90EJ5n2PWbUWJQ'
+    }).addTo(this.map);
     console.log(this.agencies);
     this.markermap();
   }
@@ -112,8 +116,7 @@ export class MenuComponent implements OnInit {
         agency.payload.doc.data().longitude,
       ])
         .addTo(this.map)
-        .bindPopup(agency.payload.doc.data().town)
-        .openPopup();
+        .bindPopup(agency.payload.doc.data().town + agency.payload.doc.data().district);
     }
   }
   /** Remove map when we have multiple map object */

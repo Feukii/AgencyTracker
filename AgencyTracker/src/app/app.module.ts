@@ -11,6 +11,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { SignupComponent} from './auth/signup/signup.component';
 import { SigninComponent} from './auth/signin/signin.component';
 import { AuthService} from './services/auth.service';
@@ -21,6 +22,9 @@ import {HttpClientModule} from '@angular/common/http';
 import {AgenciesListComponent} from './agencies-list/agencies-list.component';
 import {AgencyFormComponent} from './agencies-list/agency-form/agency-form.component';
 import {SingleAgencyComponent} from './agencies-list/single-agency/single-agency.component';
+import {CloseAgenciesComponent } from './close-agencies/close-agencies.component';
+import {OurServicesComponent} from './our-services/our-services.component';
+import {ContactComponent} from './contact/contact.component';
 
 const appRoutes: Routes = [
   {path: 'auth/signup', component: SignupComponent},
@@ -29,7 +33,10 @@ const appRoutes: Routes = [
   {path: 'agencies/new', component: AgencyFormComponent},
   {path: 'agencies/view/:id', component: SingleAgencyComponent},
   { path: 'agencies', component: AgenciesListComponent},
+  {path: 'closest-agencies', component: CloseAgenciesComponent },
   { path: '', redirectTo: 'agencies', pathMatch: 'full' },
+    {path: 'contact', component: ContactComponent},
+    {path: 'services', component: OurServicesComponent},
   { path: '**', redirectTo: 'agencies' }
 ];
 
@@ -40,6 +47,9 @@ const appRoutes: Routes = [
                   SingleAgencyComponent,
                   AgencyFormComponent,
                   AgenciesListComponent,
+                  CloseAgenciesComponent,
+                  OurServicesComponent,
+                  ContactComponent,
                   SignupComponent], entryComponents: [],
     imports: [BrowserModule,
         IonicModule.forRoot(),
@@ -53,6 +63,7 @@ const appRoutes: Routes = [
       AuthGuardService,
     StatusBar,
     SplashScreen,
+      Geolocation,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

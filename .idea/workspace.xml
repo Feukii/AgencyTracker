@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e4da0ac1-49f0-4f57-88ff-482af06f777f" name="Default Changelist" comment="" />
+    <list default="true" id="e4da0ac1-49f0-4f57-88ff-482af06f777f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AgencyTracker/src/app/models/Marker.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AgencyTracker/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/AgencyTracker/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AgencyTracker/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/AgencyTracker/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AgencyTracker/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AgencyTracker/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AgencyTracker/src/app/menu/menu.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AgencyTracker/src/app/menu/menu.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AgencyTracker/src/app/services/agencies-data.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AgencyTracker/src/app/services/agencies-data.service.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1bJeHrVhUfcL9Wj5LWB5fs5s8Co" />
   <component name="ProjectViewState">
@@ -15,8 +27,9 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="C:/wamp64/www/OMNIUM_appli" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -42,6 +55,11 @@
       <workItem from="1588421641328" duration="9084000" />
       <workItem from="1588446848640" duration="4610000" />
       <workItem from="1588573884160" duration="49005000" />
+      <workItem from="1588768390431" duration="55251000" />
+      <workItem from="1589128160866" duration="564000" />
+      <workItem from="1589136311735" duration="591000" />
+      <workItem from="1589183439893" duration="41459000" />
+      <workItem from="1589303785850" duration="17466000" />
     </task>
     <servers />
   </component>
@@ -53,5 +71,9 @@
       <screen x="0" y="0" width="1360" height="728" />
     </state>
     <state x="268" y="23" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1360.728@0.0.1360.728" timestamp="1588607393026" />
+    <state x="460" y="120" key="FileChooserDialogImpl" timestamp="1589081189695">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state x="460" y="120" key="FileChooserDialogImpl/0.0.1360.728@0.0.1360.728" timestamp="1589081189695" />
   </component>
 </project>
