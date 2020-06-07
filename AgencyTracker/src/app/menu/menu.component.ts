@@ -25,24 +25,7 @@ export class MenuComponent implements OnInit {
     private agenciesDataService: AgenciesDataService,
     private firestore: AngularFirestore
   ) {}
-  movetosignin() {
-    this.router.navigate(['/auth/signin']);
-  }
-  UseConditions() {
-    this.router.navigate(['term-of-use']);
-  }
-  services() {
-    this.router.navigate(['services']);
-  }
-  agencylists() {
-    this.router.navigate(['agencies']);
-  }
-  contactus() {
-    this.router.navigate(['contact']);
-  }
-  closeagencies() {
-    this.router.navigate(['closest-agencies']);
-  }
+
   clickmethod() {
     this.isfiltered = true;
   }
@@ -94,8 +77,8 @@ export class MenuComponent implements OnInit {
     L.Marker.prototype.options.icon = iconDefault;
 
     this.map = new Map('mapId').setView(
-      [4.05055, 9.70235],
-      18
+      [4.22055, 9.71235],
+      14
     );
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
       attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors,' +
@@ -116,11 +99,35 @@ export class MenuComponent implements OnInit {
         agency.payload.doc.data().longitude,
       ])
         .addTo(this.map)
-        .bindPopup(agency.payload.doc.data().town + agency.payload.doc.data().district);
+        .bindPopup( agency.payload.doc.data().agencyName + ' ' + agency.payload.doc.data().town + ' ' + agency.payload.doc.data().district).openPopup();
     }
+  }
+  ViewMap() {
+    this.router.navigate(['closest-agencies']);
   }
   /** Remove map when we have multiple map object */
   ionViewWillLeave() {
     this.map.remove();
+  }
+  movetosignin() {
+    this.router.navigate(['/auth/signin']);
+  }
+  UseConditions() {
+    this.router.navigate(['term-of-use']);
+  }
+  services() {
+    this.router.navigate(['services']);
+  }
+  agencylists() {
+    this.router.navigate(['agencies']);
+  }
+  contactus() {
+    this.router.navigate(['contact']);
+  }
+  closeagencies() {
+    this.router.navigate(['closest-agencies']);
+  }
+  home() {
+    this.router.navigate(['menu']);
   }
 }

@@ -16,6 +16,27 @@ export class AgencyFormComponent implements OnInit {
 
   ngOnInit() {
   }
+  home() {
+    this.router.navigate(['menu']);
+  }
+  movetosignin() {
+    this.router.navigate(['/auth/signin']);
+  }
+  UseConditions() {
+    this.router.navigate(['conditions']);
+  }
+  services() {
+    this.router.navigate(['services']);
+  }
+  agencylists() {
+    this.router.navigate(['agencies']);
+  }
+  contactus() {
+    this.router.navigate(['contact']);
+  }
+  closeagencies() {
+    this.router.navigate(['closest-agencies']);
+  }
     onSubmit() {
     this.agenciesDataService.form.value.agency  = this.agency;
     const data = this.agenciesDataService.form.value;

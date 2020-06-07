@@ -25,6 +25,7 @@ import {SingleAgencyComponent} from './agencies-list/single-agency/single-agency
 import {CloseAgenciesComponent } from './close-agencies/close-agencies.component';
 import {OurServicesComponent} from './our-services/our-services.component';
 import {ContactComponent} from './contact/contact.component';
+import {TermOfUseComponent } from './term-of-use/term-of-use.component';
 
 const appRoutes: Routes = [
   {path: 'auth/signup', component: SignupComponent},
@@ -34,9 +35,10 @@ const appRoutes: Routes = [
   {path: 'agencies/view/:id', component: SingleAgencyComponent},
   { path: 'agencies', component: AgenciesListComponent},
   {path: 'closest-agencies', component: CloseAgenciesComponent },
-  { path: '', redirectTo: 'agencies', pathMatch: 'full' },
+    {path: 'conditions', component: TermOfUseComponent },
     {path: 'contact', component: ContactComponent},
     {path: 'services', component: OurServicesComponent},
+    { path: '', redirectTo: 'agencies', pathMatch: 'full' },
   { path: '**', redirectTo: 'agencies' }
 ];
 
@@ -50,6 +52,7 @@ const appRoutes: Routes = [
                   CloseAgenciesComponent,
                   OurServicesComponent,
                   ContactComponent,
+                  TermOfUseComponent,
                   SignupComponent], entryComponents: [],
     imports: [BrowserModule,
         IonicModule.forRoot(),

@@ -4,6 +4,7 @@ import * as L from 'leaflet';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import {AgenciesDataService} from '../services/agencies-data.service';
 import { AngularFirestore } from '@angular/fire/firestore';
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -13,6 +14,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class CloseAgenciesComponent implements OnInit {
     map: Map;
+    currentposition;
+    currentaccuracy;
     latitude: any; // latitude
     longitude: any; // longitude
     agencies;
@@ -23,10 +26,19 @@ export class CloseAgenciesComponent implements OnInit {
     allDistances: any [] = [];
     spliceDistances: any [] = [];
     distance: any [] = [];
+    radius;
     constructor(private geolocation: Geolocation,
                 private agenciesDataService: AgenciesDataService,
-                private firestore: AngularFirestore
-    ) { }
+                private firestore: AngularFirestore,
+                private router: Router,
+    ) {
+        if (navigator) {
+            navigator.geolocation.getCurrentPosition( pos => {
+                this.longitude = +pos.coords.longitude;
+                this.latitude = +pos.coords.latitude;
+            });
+        }
+    }
     options = {
         timeout: 10000,
         enableHighAccuracy: true,
@@ -41,7 +53,7 @@ export class CloseAgenciesComponent implements OnInit {
                 this.leafletMap();
             });
     }
-
+/*
     getCurrentCoordinates() {
         this.geolocation.getCurrentPosition().then((resp) => {
             this.latitude = resp.coords.latitude;
@@ -52,9 +64,11 @@ export class CloseAgenciesComponent implements OnInit {
         });
     }
 
+ */
+
 
     ngOnInit() {
-        this.getCurrentCoordinates();
+       // this.getCurrentCoordinates();
         this.getAgencies();
     }
     getAgencies() {
@@ -80,7 +94,7 @@ export class CloseAgenciesComponent implements OnInit {
         L.Marker.prototype.options.icon = iconDefault;
         this.map = new Map('map').setView(
             [4.05055, 9.70235],
-            18
+            15
         );
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
@@ -99,6 +113,7 @@ export class CloseAgenciesComponent implements OnInit {
 
     }
     createMarker() {
+        // console.log(this.latitude, this.longitude);
         const markerCurrent = marker([this.latitude, this.longitude]);
         const position = markerCurrent.getLatLng();
         markerCurrent.bindPopup('Here is your current position');
@@ -146,7 +161,7 @@ export class CloseAgenciesComponent implements OnInit {
                             = this['markerPoint' +  j ].getLatLng();
                         console.log('d');
                         this['markerPoint' + j]
-                            .bindPopup(this.allDistances[i].agencyname + '' + this.allDistances[i].district + this.spliceDistances[j]);
+                            .bindPopup(this.allDistances[i].agencyname + ' ' + this.allDistances[i].district + ' ' + this.spliceDistances[j] + ' ' + ' km de votre position actuelle');
                         console.log('e');
                         this.map.addLayer(this['markerPoint' + j]);
                         console.log('f');
@@ -168,6 +183,31 @@ export class CloseAgenciesComponent implements OnInit {
         }
          }
      */
+    ViewMap() {
+        this.router.navigate(['/agencies', 'new']);
+    }
+    home() {
+        this.router.navigate(['menu']);
+    }
+
+    movetosignin() {
+        this.router.navigate(['/auth/signin']);
+    }
+    UseConditions() {
+        this.router.navigate(['term-of-use']);
+    }
+    services() {
+        this.router.navigate(['services']);
+    }
+    agencylists() {
+        this.router.navigate(['agencies']);
+    }
+    contactus() {
+        this.router.navigate(['contact']);
+    }
+    closeagencies() {
+        this.router.navigate(['closest-agencies']);
+    }
     ionViewWillLeave() {
         this.map.remove();
     }

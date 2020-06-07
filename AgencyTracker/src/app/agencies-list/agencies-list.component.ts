@@ -37,4 +37,28 @@ export class AgenciesListComponent implements OnInit {
     this.router.navigate(['/agencies', 'new']);
     console.log(this.agencies);
   }
+  ViewMap() {
+    this.router.navigate(['menu']);
+  }
+  home() {
+    this.router.navigate(['menu']);
+  }
+  movetosignin() {
+    this.router.navigate(['/auth/signin']);
+  }
+  UseConditions() {
+    this.router.navigate(['conditions']);
+  }
+  services() {
+    this.router.navigate(['services']);
+  }
+  agencylists() {
+    this.router.navigate(['agencies']);
+  }
+  contactus() {
+    this.router.navigate(['contact']);
+  }
+  closeagencies() {
+    this.router.navigate(['closest-agencies']);
+  }
 }

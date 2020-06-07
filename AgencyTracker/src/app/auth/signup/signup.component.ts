@@ -27,6 +27,27 @@ export class SignupComponent implements OnInit {
       password: ['', [Validators.required, Validators.pattern(/[0-9a-zA-Z]{6,}/)]]
     });
   }
+  home() {
+    this.router.navigate(['menu']);
+  }
+  movetosignin() {
+    this.router.navigate(['/auth/signin']);
+  }
+  UseConditions() {
+    this.router.navigate(['term-of-use']);
+  }
+  services() {
+    this.router.navigate(['services']);
+  }
+  agencylists() {
+    this.router.navigate(['agencies']);
+  }
+  contactus() {
+    this.router.navigate(['contact']);
+  }
+  closeagencies() {
+    this.router.navigate(['closest-agencies']);
+  }
 
   onSubmit() {
     const email = this.signupForm.get('email').value;

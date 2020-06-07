@@ -1,6 +1,56 @@
+<ion-menu side="start" content-id="main-content">
+    <ion-header>
+        <ion-toolbar translucent>
+            <ion-img src="data:image/png;base64,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"></ion-img>
+            <ion-title></ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content>
+        <ion-list>
+            <ion-item button (click)="home()">
+                <ion-icon name="location" slot="start"></ion-icon>
+                <ion-label >Home</ion-label>
+            </ion-item>
+            <ion-item button (click)="closeagencies()">
+                <ion-icon name="location" slot="start"></ion-icon>
+                <ion-label >Geolocate close agencies</ion-label>
+            </ion-item>
+            <ion-item button (click)="agencylists()">
+                <ion-icon name="home" slot="start"></ion-icon>
+                <ion-label>agency lists</ion-label>
+            </ion-item>
+            <ion-item button (click)="services()">
+                <ion-icon name="build" slot="start"></ion-icon>
+                <ion-label>Our Services</ion-label>
+            </ion-item>
+            <ion-item button (click)="contactus()">
+                <ion-icon name="call" slot="start"></ion-icon>
+                <ion-label>Contact Us</ion-label>
+            </ion-item>
+            <ion-item  button (click)="UseConditions()">
+                <ion-icon name="document-text" slot="start"></ion-icon>
+                <ion-label>terms of use</ion-label>
+            </ion-item>
+
+            <ion-item button (click)="movetosignin()">
+                <ion-icon name="person-circle" slot="start"></ion-icon>
+                <ion-label>Sign in</ion-label>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-menu>
+
 <ion-header>
     <ion-toolbar>
-        <ion-title>SmobilPay's Agencies</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/"></ion-back-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button (click)="ViewMap()">
+                <ion-icon name= "map"></ion-icon>Join the nearest point
+            </ion-button>
+        </ion-buttons>
+        <ion-title>AgencyTrackerApp</ion-title>
     </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
